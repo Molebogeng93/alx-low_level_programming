@@ -9,7 +9,7 @@
 
 void print_all(const char * const format, ...)
 {
-	int k = 0;
+	int i = 0;
 	char *str, *sep = "";
 
 	va_list list;
@@ -18,9 +18,9 @@ void print_all(const char * const format, ...)
 
 	if (format)
 	{
-		while (format[k])
+		while (format[i])
 		{
-	switch (format[k])
+			switch (format[i])
 			{
 				case 'c':
 					printf("%s%c", sep, va_arg(list, int));
@@ -33,16 +33,16 @@ void print_all(const char * const format, ...)
 					break;
 				case 's':
 					str = va_arg(list, char *);
-			if (!str)
+					if (!str)
 						str = "(nil)";
 					printf("%s%s", sep, str);
 					break;
 				default:
-					k++;
+					i++;
 					continue;
 			}
 			sep = ", ";
-			k++;
+			i++;
 		}
 	}
 
